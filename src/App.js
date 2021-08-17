@@ -1,8 +1,8 @@
-import './App.css';
+import Main from './pages/Main'
 
 function App() {
   return (
-    <h1>Deezer Mani</h1>
+    <Main />
   );
 }
 
