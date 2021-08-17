@@ -3,7 +3,7 @@ export const REQUEST_API = 'REQUEST_API';
 export const GET_TOKEN = 'GET_TOKEN';
 
 const TOKEN_API_URL = 'https://connect.deezer.com/oauth/auth.php?app_id=497582&redirect_uri=http://localhost:3000/&perms=basic_access';
-const PLAYLIST_API_URL = 'https://api.deezer.com/oembed?url=https://www.deezer.com/album/302127&maxwidth=700&maxheight=300&tracklist=true&format=json';
+const PLAYLIST_API_URL = 'https://cors-anywhere.herokuapp.com/http://api.deezer.com/search/track/autocomplete?limit=1&q=eminem';
 
 export function requestAPI() {
   return {
@@ -31,7 +31,7 @@ export function fetchAPI() {
     return fetch(PLAYLIST_API_URL)
       .then((response) => response.json())
       .then((json) => json)
-      .then((data) => dispatch(console.log(data)))
+      .then((data) => dispatch(getAPI(data)))
   }
 };
 

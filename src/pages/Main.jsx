@@ -4,14 +4,12 @@ import { fetchAPI, fetchTokenAPI } from '../redux/actions';
 
 class Main extends Component {
   componentDidMount() {
-    const { getTokenFromProps } = this.props;
-    getTokenFromProps();
+    const { getPlaylistFromProps } = this.props;
+    getPlaylistFromProps();
   }
   render() {
-    const { getPlaylistFromProps } = this.props;
     return(
-      <button type="button" onClick={ () => getPlaylistFromProps() }>Request</button>
-      
+      <h1>Mani Deezer</h1>
     )
   }
 };
