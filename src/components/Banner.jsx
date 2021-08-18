@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
+
+const Album = styled.div`
+  margin: 1rem;
+`
 
 class Banner extends Component {
   render () {
-    const { name, artist, id, image, link, preview, title } = this.props;
+    const { name, artist, id, image, link, preview } = this.props;
     return (
-      <div>
-        <h2>{title}</h2>
+      <Album>
         <a
           href={ link }
           target="_blank"
@@ -15,7 +19,7 @@ class Banner extends Component {
         </a>
         <h3>{ name }</h3>
         <p>{`Por ${artist}`}</p>
-      </div>
+      </Album>
     )
   }
 }
