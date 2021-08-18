@@ -1,6 +1,9 @@
 export const SUCCESS_REQUEST = 'SUCCESS_REQUEST';
 export const REQUEST_API = 'REQUEST_API';
 export const TOGGLE_PLAY = 'TOGGLE_PLAY';
+export const ADD_FAV = 'ADD_FAV';
+export const REMOVE_FAV = 'REMOVE_FAV';
+
 
 export function requestAPI() {
   return {
@@ -18,6 +21,20 @@ export function getAPI(data) {
 export function togglePlay() {
   return {
     type: TOGGLE_PLAY,
+  }
+}
+
+export function addFav(song) {
+  return {
+    type: ADD_FAV,
+    payload: song,
+  }
+}
+
+export function removeFav(id) {
+  return {
+    type: REMOVE_FAV,
+    payload: id,
   }
 }
 

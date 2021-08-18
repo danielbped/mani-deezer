@@ -3,17 +3,12 @@ import { connect } from 'react-redux';
 import Loading from '../Loading'
 import styled from 'styled-components';
 import Banner from './Banner';
+import { Link } from 'react-router-dom';
 
 
 const Main = styled.div`
   display:flex;
 `
-
-const Title = styled.h2`
-  margin:1rem;
-`
-
-
 
 class MainTracks extends Component {
   render () {
@@ -21,14 +16,14 @@ class MainTracks extends Component {
     if(loading) return <Loading />;
     return (
       <div>
-        <Title>As mais tocadas</Title>
+        <Link to="/favorites">Favs</Link>
         <Main>
           {content !== [] && content.data.map((track) => 
             <Banner 
               name={ track.title }
               artist={ track.artist.name }
               id={ track.id }
-              image={ track.album.cover }
+              cover={ track.album.cover }
               link={ track.artist.link }
               preview={ track.preview }
               duration={ track.duration }

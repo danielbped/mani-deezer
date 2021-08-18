@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { togglePlay } from '../../redux/actions'
+import { togglePlay, addFav, removeFav } from '../../redux/actions'
 
 const Album = styled.div`
   margin: 1rem;
@@ -16,7 +16,19 @@ class Banner extends Component {
   }
   
   render () {
-    const { name, artist, image, link, preview, number_tracks, duration } = this.props;
+    const {
+      name,
+      artist,
+      cover,
+      link,
+      preview,
+      duration,
+      addFavSong,
+      removeFromFavs,
+      onClick,
+      id
+    } = this.props;
+
     const minutes = Math.floor(duration/60);
     const seconds = Math.floor(((duration/60) - minutes)*60)
     const time = `${minutes}:${seconds}`;
@@ -26,19 +38,23 @@ class Banner extends Component {
           type="button"
           onClick={ () => this.playSound(preview) }
         >
-          <img src={ image } alt={ name } />
+          <img src={ cover } alt={ name } />
         </button>
-        { !artist ? null : <h3>{ name }</h3> }
-        { !duration ? null : <p>{ time }</p> }
-        { !number_tracks ? null : <p>{`${number_tracks} músicas`}</p> }
+        <h3>{ name }</h3>
+        <p>{ time }</p>
         <a
           href={ link }
           target="_blank"
           rel="noreferrer"
           >
-        {artist === undefined ? <p>{ name }</p> : <p>{`Por ${artist}`}</p>}
+        <p>{`Por ${artist}`}</p>
         </a>
-        <button type="button">Adicionar aos favoritos</button>
+        <button
+          type="button"
+          onClick={ !onClick ? () => addFavSong(this.props) : () => removeFromFavs(id)}
+        >
+          Adicionar aos favoritos
+        </button>
       </Album>
     )
   }
@@ -49,7 +65,9 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  togglePlaying: () => dispatch(togglePlay())
+  togglePlaying: () => dispatch(togglePlay()),
+  addFavSong: (song) => dispatch(addFav(song)),
+  removeFromFavs: (id) => dispatch(removeFav(id)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Banner);
