@@ -1,7 +1,6 @@
 export const SUCCESS_REQUEST = 'SUCCESS_REQUEST';
 export const REQUEST_API = 'REQUEST_API';
-
-const PLAYLIST_API_URL = 'https://cors-anywhere.herokuapp.com/https://api.deezer.com/chart';
+export const TOGGLE_PLAY = 'TOGGLE_PLAY';
 
 export function requestAPI() {
   return {
@@ -16,10 +15,16 @@ export function getAPI(data) {
   }
 };
 
-export function fetchAPI() {
+export function togglePlay() {
+  return {
+    type: TOGGLE_PLAY,
+  }
+}
+
+export function fetchAPI(URL) {
   return (dispatch) => {
     dispatch(requestAPI());
-    return fetch(PLAYLIST_API_URL)
+    return fetch(URL)
       .then((response) => response.json())
       .then((json) => json)
       .then((data) => dispatch(getAPI(data)))

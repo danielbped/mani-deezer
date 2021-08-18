@@ -1,7 +1,8 @@
-import { SUCCESS_REQUEST, REQUEST_API } from '../actions'
+import { SUCCESS_REQUEST, REQUEST_API, TOGGLE_PLAY } from '../actions'
 
 const INITIAL_STATE = {
-  loading: false,
+  loading: true,
+  playing: false,
   playlist: [],
 };
 
@@ -16,7 +17,12 @@ const statePlaylist = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         loading: false,
-        playlist: action.payload,
+        playlist: action.payload.tracks || action.payload,
+      }
+    case TOGGLE_PLAY:
+      return {
+        ...state,
+        playing: !state.playing,
       }
     default:
       return state;

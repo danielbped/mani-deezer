@@ -1,27 +1,37 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Banner from './Banner';
+import Loading from '../Loading'
 import styled from 'styled-components';
+import Banner from './Banner';
+
 
 const Main = styled.div`
   display:flex;
 `
 
+const Title = styled.h2`
+  margin:1rem;
+`
+
+
+
 class MainTracks extends Component {
   render () {
-    const { content } = this.props;
+    const { loading, content } = this.props;
+    if(loading) return <Loading />;
     return (
       <div>
-        <h2>As mais tocadas</h2>
+        <Title>As mais tocadas</Title>
         <Main>
-          {content !== [] && content.tracks.data.map((track) => 
+          {content !== [] && content.data.map((track) => 
             <Banner 
               name={ track.title }
               artist={ track.artist.name }
               id={ track.id }
-              image={ track.artist.picture }
+              image={ track.album.cover }
               link={ track.artist.link }
               preview={ track.preview }
+              duration={ track.duration }
             />
           )}
         </Main>
