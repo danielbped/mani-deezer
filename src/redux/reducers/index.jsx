@@ -1,10 +1,8 @@
 import { combineReducers } from "redux";
-import playlist from './playlist';
-import user from './user';
+import statePlaylist from './statePlaylist';
 
 const rootReducer = combineReducers({
-  playlist,
-  user,
+  statePlaylist,
 });
 
 export default rootReducer;

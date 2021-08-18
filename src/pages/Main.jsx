@@ -1,22 +1,32 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchAPI, fetchTokenAPI } from '../redux/actions';
+import { fetchAPI } from '../redux/actions';
+import Header from '../components/Header';
+import MainTracks from '../components/MainTracks';
 
 class Main extends Component {
   componentDidMount() {
     const { getPlaylistFromProps } = this.props;
     getPlaylistFromProps();
   }
+
   render() {
+    const { loading } = this.props;
     return(
-      <h1>Mani Deezer</h1>
+      <main>
+        <Header />
+        {!loading && <MainTracks />}
+      </main>
     )
   }
 };
 
 const mapDispatchToProps = (dispatch) => ({
   getPlaylistFromProps: () => dispatch(fetchAPI()),
-  getTokenFromProps: () => dispatch(fetchTokenAPI()),
 })
 
-export default connect(null, mapDispatchToProps)(Main);
+const mapStateToProps = (state) => ({
+  loading: state.statePlaylist.loading,
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
