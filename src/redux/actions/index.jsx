@@ -1,8 +1,6 @@
 export const SUCCESS_REQUEST = 'SUCCESS_REQUEST';
 export const REQUEST_API = 'REQUEST_API';
-export const TOGGLE_PLAY = 'TOGGLE_PLAY';
-export const ADD_FAV = 'ADD_FAV';
-export const REMOVE_FAV = 'REMOVE_FAV';
+export const TOGGLE_FAV = 'TOGGLE_FAV';
 
 
 export function requestAPI() {
@@ -18,30 +16,23 @@ export function getAPI(data) {
   }
 };
 
-export function togglePlay() {
+export function toggleFav(song) {
   return {
-    type: TOGGLE_PLAY,
-  }
-}
-
-export function addFav(song) {
-  return {
-    type: ADD_FAV,
+    type: TOGGLE_FAV,
     payload: song,
-  }
-}
-
-export function removeFav(id) {
-  return {
-    type: REMOVE_FAV,
-    payload: id,
   }
 }
 
 export function fetchAPI(URL) {
   return (dispatch) => {
     dispatch(requestAPI());
-    return fetch(URL)
+    return fetch(URL, {
+      "method": "GET",
+      "headers": {
+        "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+        "x-rapidapi-key": "7d620fc178msh9b8dd7415474761p15962djsn95f6930f45c5"
+      }
+    })
       .then((response) => response.json())
       .then((json) => json)
       .then((data) => dispatch(getAPI(data)))

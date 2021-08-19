@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Banner from '../components/MainTracks/Banner';
+import Header from '../components/Header';
 
 class Favs extends Component {
   render() {
     const { favs } = this.props;
-    if(favs === []) {
-      return <p>Parace que você ainda não adicionou nenhuma música aos seus favoritos</p>
-    }
     return(
       <main>
+        <Header />
+        <Link to='/'>
+          <button type='button'>Voltar</button>
+        </Link>
         <h2>Músicas Favoritas</h2>
         <div>
-          {favs.map((fav) => (
+          {favs.length < 1 ? <p>Parece que você ainda não adicionou nenhuma música.</p>
+            : favs.map((fav) => (
             <Banner 
             name={ fav.name }
             artist={ fav.artist }

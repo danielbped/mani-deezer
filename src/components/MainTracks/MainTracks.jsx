@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import Loading from '../Loading'
 import styled from 'styled-components';
 import Banner from './Banner';
-import { Link } from 'react-router-dom';
-
 
 const Main = styled.div`
   display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
 `
 
 class MainTracks extends Component {
@@ -16,14 +16,14 @@ class MainTracks extends Component {
     if(loading) return <Loading />;
     return (
       <div>
-        <Link to="/favorites">Favs</Link>
         <Main>
           {content !== [] && content.data.map((track) => 
             <Banner 
               name={ track.title }
               artist={ track.artist.name }
               id={ track.id }
-              cover={ track.album.cover }
+              key={ track.id }
+              cover={ track.album.cover_xl }
               link={ track.artist.link }
               preview={ track.preview }
               duration={ track.duration }

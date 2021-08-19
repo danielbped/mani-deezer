@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { togglePlay, addFav, removeFav } from '../../redux/actions'
+import { toggleFav } from '../../redux/actions'
+import FavIcon from '../FavIcon';
 
 const Album = styled.div`
+  display: flex;
+  flex-direction: column;
   margin: 1rem;
+  width: 15%
 `
 
 class Banner extends Component {
-  playSound = (preview) => {
-    const { togglePlaying, playing } = this.props;
-    const audio = new Audio(preview);
-    playing ? audio.pause() : audio.play();
-    togglePlaying();
-  }
-  
   render () {
     const {
       name,
@@ -23,23 +20,21 @@ class Banner extends Component {
       link,
       preview,
       duration,
-      addFavSong,
-      removeFromFavs,
-      onClick,
-      id
+      toggleFavSong,
+      id,
+      favs
     } = this.props;
 
+    const audio = new Audio(preview);
     const minutes = Math.floor(duration/60);
     const seconds = Math.floor(((duration/60) - minutes)*60)
     const time = `${minutes}:${seconds}`;
+    
     return (
       <Album>
-        <button
-          type="button"
-          onClick={ () => this.playSound(preview) }
-        >
-          <img src={ cover } alt={ name } />
-        </button>
+        <img src={ cover } alt={ name } />
+        <button type="button" onClick={ () => audio.play() }>Ouvir</button> 
+        <button type="button" onClick={ () => audio.pause() }>Pausar</button>
         <h3>{ name }</h3>
         <p>{ time }</p>
         <a
@@ -49,12 +44,7 @@ class Banner extends Component {
           >
         <p>{`Por ${artist}`}</p>
         </a>
-        <button
-          type="button"
-          onClick={ !onClick ? () => addFavSong(this.props) : () => removeFromFavs(id)}
-        >
-          Adicionar aos favoritos
-        </button>
+        <FavIcon onClick={ () => toggleFavSong(this.props) } bool={ favs.some((fav) => fav.id === id) } />
       </Album>
     )
   }
@@ -62,12 +52,11 @@ class Banner extends Component {
 
 const mapStateToProps = (state) => ({
   playing: state.statePlaylist.playing,
+  favs: state.user.favs,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  togglePlaying: () => dispatch(togglePlay()),
-  addFavSong: (song) => dispatch(addFav(song)),
-  removeFromFavs: (id) => dispatch(removeFav(id)),
+  toggleFavSong: (song) => dispatch(toggleFav(song)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Banner);

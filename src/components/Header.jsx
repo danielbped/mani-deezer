@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { fetchAPI } from '../redux/actions';
 
 const HeaderStyled = styled.header`
+  background-color: black;
+  color: white;
   display:flex;
-  background-color: gray;
   padding: 1rem;
   justify-content: space-around;
 `
@@ -23,7 +25,7 @@ class Header extends Component {
   handleClick = () => {
     const { getPlaylistFromProps } = this.props;
     const { input } = this.state;
-    const URL_API = `https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=${input}`
+    const URL_API = `https://deezerdevs-deezer.p.rapidapi.com/search?q=${input}`
     getPlaylistFromProps(URL_API);
   }
 
@@ -36,6 +38,11 @@ class Header extends Component {
         <div>
           <input name='input' type='text' onChange={ this.handleChange } placeholder='Buscar' />
           <button type='button' onClick={ this.handleClick }>Buscar</button>
+          <div>
+            <Link to="/favorites">
+              <button type="button">Músicas Favoritas</button>
+            </Link>
+          </div>
         </div>
       </HeaderStyled>
     );
