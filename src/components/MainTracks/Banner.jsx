@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { toggleFav } from '../../redux/actions';
+import Player from '../Player';
 import {
   Album,
   Button,
   Buttons,
-  StyledPause,
-  StyledPlay,
   StyledHeart,
   Info,
   Title,
@@ -31,7 +30,6 @@ class Banner extends Component {
       albumId,
     } = this.props;
 
-    const audio = new Audio(preview);
     const minutes = Math.floor(duration/60);
     const seconds = Math.floor(((duration/60) - minutes)*60);
     const time = `${minutes}:${seconds < 10 ? `0${seconds}` : seconds }`;
@@ -50,20 +48,10 @@ class Banner extends Component {
           />
         </AlbumLink>
         <Buttons>
-          <Button 
-            type="button" 
-            onClick={ () => audio.play() }
-          >
-            <StyledPlay />
-          </Button> 
-          <Button 
-            type="button" 
-            onClick={ () => audio.pause() }
-          >
-            <StyledPause />
-          </Button>
-          <Button 
-          onClick={ () => toggleFavSong(this.props) }
+          <Player preview={ preview } />
+          <Button
+            type="button"
+            onClick={ () => toggleFavSong(this.props) }
         >
           <StyledHeart
             bool={ favs.some((fav) => fav.id === id) }
