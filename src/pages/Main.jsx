@@ -4,7 +4,7 @@ import { fetchAPI } from '../redux/actions';
 import Header from '../components/Header';
 import MainTracks from '../components/MainTracks/MainTracks';
 
-const PLAYLIST_API_URL = 'https://cors-anywhere.herokuapp.com/https://api.deezer.com/chart/0';
+const PLAYLIST_API_URL = 'https://deezerdevs-deezer.p.rapidapi.com/playlist/948759923';
 
 class Main extends Component {
   componentDidMount() {
