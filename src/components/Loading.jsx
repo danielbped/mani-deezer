@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { StyledLoading, LoadingMain } from './StyledComponents/StyledLoading';
 
 class Loading extends Component {
   render () {
     return (
-      <p>Carregando ...</p>
+      <LoadingMain>
+        <StyledLoading />
+      </LoadingMain>
     )
   }
 }
