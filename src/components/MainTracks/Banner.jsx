@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
-import { toggleFav } from '../../redux/actions'
-import FavIcon from '../FavIcon';
-
-const Album = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 1rem;
-  width: 15%
-`
+import { toggleFav } from '../../redux/actions';
+import {
+  Album,
+  Button,
+  Buttons,
+  StyledPause,
+  StyledPlay,
+  StyledHeart,
+  Info,
+  Title,
+  Time,
+  ArtistLink,
+  AlbumLink,
+  AlbumImage,
+} from './StyledComponents/StyledBanner';
 
 class Banner extends Component {
   render () {
@@ -22,29 +27,61 @@ class Banner extends Component {
       duration,
       toggleFavSong,
       id,
-      favs
+      favs,
+      albumId,
     } = this.props;
 
     const audio = new Audio(preview);
     const minutes = Math.floor(duration/60);
-    const seconds = Math.floor(((duration/60) - minutes)*60)
-    const time = `${minutes}:${seconds}`;
-    
+    const seconds = Math.floor(((duration/60) - minutes)*60);
+    const time = `${minutes}:${seconds < 10 ? `0${seconds}` : seconds }`;
+    const albumLink = `https://www.deezer.com/br/album/${albumId}`;
+
     return (
       <Album>
-        <img src={ cover } alt={ name } />
-        <button type="button" onClick={ () => audio.play() }>Ouvir</button> 
-        <button type="button" onClick={ () => audio.pause() }>Pausar</button>
-        <h3>{ name }</h3>
-        <p>{ time }</p>
-        <a
-          href={ link }
+        <AlbumLink
+          href={ albumLink }
           target="_blank"
           rel="noreferrer"
+        >
+          <AlbumImage
+            src={ cover }
+            alt={ name }
+          />
+        </AlbumLink>
+        <Buttons>
+          <Button 
+            type="button" 
+            onClick={ () => audio.play() }
           >
-        <p>{`Por ${artist}`}</p>
-        </a>
-        <FavIcon onClick={ () => toggleFavSong(this.props) } bool={ favs.some((fav) => fav.id === id) } />
+            <StyledPlay />
+          </Button> 
+          <Button 
+            type="button" 
+            onClick={ () => audio.pause() }
+          >
+            <StyledPause />
+          </Button>
+          <Button 
+          onClick={ () => toggleFavSong(this.props) }
+        >
+          <StyledHeart
+            bool={ favs.some((fav) => fav.id === id) }
+          />
+        </Button>
+        </Buttons>
+        <Info>
+          <Title>{ name }</Title>
+          <Time>{ time }</Time>
+          <ArtistLink
+            href={ link }
+            target="_blank"
+            rel="noreferrer"
+            >
+          <p>{artist}</p>
+          </ArtistLink>
+        </Info>
+
       </Album>
     )
   }
