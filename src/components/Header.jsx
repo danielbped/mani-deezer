@@ -40,7 +40,10 @@ class Header extends Component {
     return (
       <StyledHeader>
         <Title>
-          <StyledLogo src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Deezer_Icon.svg" alt="deezer" />
+          <StyledLogo
+            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Deezer_Icon.svg"
+            alt="deezer"
+          />
           Maneezer
         </Title>
         <RightHeader>
