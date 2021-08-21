@@ -1,6 +1,7 @@
 export const SUCCESS_REQUEST = 'SUCCESS_REQUEST';
 export const REQUEST_API = 'REQUEST_API';
 export const TOGGLE_FAV = 'TOGGLE_FAV';
+export const TOGGLE_PLAY = 'TOGGLE_PLAY';
 
 
 export function requestAPI() {
@@ -21,7 +22,14 @@ export function toggleFav(song) {
     type: TOGGLE_FAV,
     payload: song,
   }
-}
+};
+
+export function togglePlay(preview) {
+  return {
+    type: TOGGLE_PLAY,
+    payload: preview,
+  }
+};
 
 export function fetchAPI(URL) {
   return (dispatch) => {

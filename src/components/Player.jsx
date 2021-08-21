@@ -1,44 +1,62 @@
 import React, { Component } from 'react';
 import { StyledPlayer, StyledPause, StyledPlay } from './StyledComponents/StyledPlayer';
+import { connect } from 'react-redux';
+import { togglePlay } from '../redux/actions';
+
 
 class Player extends Component {
   constructor({ preview }) {
     super();
-
     this.state = {
-      isPlaying: false,
       audio: new Audio(preview),
     }
   }
-
+  
   componentDidMount() {
     const { audio } = this.state;
-    audio.addEventListener('ended', () => this.setState({ isPlaying: false }));
+    const { togglePlaying } = this.props;
+    audio.addEventListener('ended', () => togglePlaying(''));
   }
   
   componentWillUnmount() {
     const { audio } = this.state;
-    audio.removeEventListener('ended', () => this.setState({ isPlaying: false }));  
+    const { togglePlaying } = this.props;
+    audio.removeEventListener('ended', () => togglePlaying(''));  
   }
   
   togglePlay = () => {
-    const { isPlaying, audio } = this.state;
-    this.setState(prevState => ({
-      isPlaying: !prevState.isPlaying,
-    }), () => isPlaying ? audio.pause() : audio.play())
+    const { audio } = this.state;
+    const { togglePlaying, Player, preview, statePreview } = this.props;
+    if((Player) && preview === statePreview) {
+      togglePlaying(preview);
+      return audio.pause();
+    } else if (!Player) {
+      togglePlaying(preview);
+      return audio.play();
+    }
   }
 
   render() {
-    const { isPlaying } = this.state;
+    const { Player, preview, statePreview  } = this.props;
+
     return (
       <StyledPlayer
         type="button"
         onClick={ this.togglePlay }
       >
-        {isPlaying ?  <StyledPause /> : <StyledPlay />}
+        {(Player) && preview === statePreview ?  <StyledPause /> : <StyledPlay />}
       </StyledPlayer>
     )
   }
 }
 
-export default Player;
+const mapStateToProps = (state) => ({
+  statePreview: state.statePlaylist.statePreview,
+  Player: state.statePlaylist.isPlaying,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  togglePlaying: (preview) => dispatch(togglePlay(preview))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Player);

@@ -25,6 +25,7 @@ export const SearchBar = styled.input`
   border-radius: 1rem;
   margin: 1rem;
   padding: 0.4rem;
+  padding-left: 1rem;
 
   &:focus {
     outline: none;
