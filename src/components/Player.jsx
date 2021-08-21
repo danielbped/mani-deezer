@@ -10,7 +10,7 @@ class Player extends Component {
       audio: new Audio(preview),
     }
   }
-  
+
   componentDidMount() {
     const { audio } = this.state;
     audio.addEventListener('ended', () => this.setState({ isPlaying: false }));
@@ -25,7 +25,7 @@ class Player extends Component {
     const { isPlaying, audio } = this.state;
     this.setState(prevState => ({
       isPlaying: !prevState.isPlaying,
-    }), () => isPlaying ? audio.play() : audio.pause())
+    }), () => isPlaying ? audio.pause() : audio.play())
   }
 
   render() {

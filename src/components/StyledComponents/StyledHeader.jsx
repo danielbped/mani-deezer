@@ -9,6 +9,10 @@ export const StyledHeader = styled.header`
   display:flex;
   justify-content: space-around;
   padding: 1rem;
+
+  @media (max-width: 400px) {
+    flex-direction: column;
+  }
 `;
 
 export const RightHeader = styled.div`

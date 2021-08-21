@@ -1,15 +1,27 @@
 import styled from 'styled-components';
 import { HeartFill } from '@styled-icons/bootstrap/HeartFill';
-import { Play } from '@styled-icons/bootstrap/';
-import { Pause } from '@styled-icons/feather/Pause';
-
 
 export const Album = styled.div`
   display: flex;
   flex-direction: column;
-  height: 40%;
   margin: 1rem;
-  width: 15%
+  width: 15%;
+
+  @media (max-width: 1000px) {
+    width: 20%;
+  }
+
+  @media (max-width: 800px) {
+    width: 25%;
+  }
+
+  @media (max-width: 600px) {
+    width: 30%;
+  }
+
+  @media (max-width: 600px) {
+    width: 50%;
+  }
 `;
 
 export const Button = styled.button`
@@ -22,26 +34,6 @@ export const Buttons = styled.div`
   display: flex;
   margin: 0.5rem;
   justify-content: center;
-`;
-
-export const StyledPause = styled(Pause)`
-  transition: 500ms;
-  margin: 0.25rem;
-  width: 1.5rem;
-
-  &:hover {
-    opacity: 0.8
-  }
-`;
-
-export const StyledPlay = styled(Play)`
-  transition: 500ms;
-  margin: 0.25rem;
-  width: 1.5rem;
-
-  &:hover {
-    opacity: 0.8
-  }
 `;
 
 export const StyledHeart = styled(HeartFill)`
@@ -72,9 +64,11 @@ export const Time = styled.p`
   opacity: 0.8;
 `;
 
-export const ArtistLink = styled.a`
+export const Link = styled.a`
   color: black;
+  cursor: pointer;
   margin: 0.25rem;
+  text-align: center;
   text-decoration: none;
 
   &:hover {
@@ -84,6 +78,7 @@ export const ArtistLink = styled.a`
 
 export const AlbumLink = styled.a`
   transition: 500ms;
+  
   &:hover {
     opacity: 0.8;
   }

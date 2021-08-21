@@ -3,6 +3,12 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Banner from '../components/MainTracks/Banner';
 import Header from '../components/Header';
+import {
+  BackButton,
+  ArrowButton,
+  Title,
+  StyledFavs,
+} from './StyledComponents/StyledFavs';
 
 class Favs extends Component {
   render() {
@@ -11,10 +17,14 @@ class Favs extends Component {
       <main>
         <Header />
         <Link to='/'>
-          <button type='button'>Voltar</button>
+          <BackButton
+            type='button'
+          >
+            <ArrowButton />
+          </BackButton>
         </Link>
-        <h2>Músicas Favoritas</h2>
-        <div>
+        <Title>Músicas Favoritas</Title>
+        <StyledFavs>
           {favs.length < 1 ? <p>Parece que você ainda não adicionou nenhuma música.</p>
             : favs.map((fav) => (
             <Banner 
@@ -28,7 +38,7 @@ class Favs extends Component {
             onClick={ true }
           />
           ))}
-        </div>
+        </StyledFavs>
       </main>
     )
   }

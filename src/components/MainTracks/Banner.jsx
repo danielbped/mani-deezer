@@ -10,9 +10,9 @@ import {
   Info,
   Title,
   Time,
-  ArtistLink,
   AlbumLink,
   AlbumImage,
+  Link,
 } from './StyledComponents/StyledBanner';
 
 class Banner extends Component {
@@ -21,13 +21,14 @@ class Banner extends Component {
       name,
       artist,
       cover,
-      link,
+      artistLink,
       preview,
       duration,
       toggleFavSong,
       id,
       favs,
       albumId,
+      MusicLink,
     } = this.props;
 
     const minutes = Math.floor(duration/60);
@@ -59,15 +60,21 @@ class Banner extends Component {
         </Button>
         </Buttons>
         <Info>
-          <Title>{ name }</Title>
+          <Link
+            href={ MusicLink }
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Title>{ name }</Title>
+          </Link>
           <Time>{ time }</Time>
-          <ArtistLink
-            href={ link }
+          <Link
+            href={ artistLink }
             target="_blank"
             rel="noreferrer"
             >
           <p>{artist}</p>
-          </ArtistLink>
+          </Link>
         </Info>
 
       </Album>
@@ -76,7 +83,6 @@ class Banner extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  playing: state.statePlaylist.playing,
   favs: state.user.favs,
 })
 

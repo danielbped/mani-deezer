@@ -6,4 +6,5 @@ export const StyledSection = styled.section`
   justify-content: center;
   margin: 2rem auto;
   width: 90%;
+  }
 `;

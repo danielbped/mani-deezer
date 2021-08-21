@@ -1,7 +1,8 @@
 import styled, { keyframes } from 'styled-components';
 import { LoaderOutline } from '@styled-icons/evaicons-outline/LoaderOutline';
 
-const rotate = keyframes`from {
+const rotate = keyframes`
+from {
   transform: rotate(0deg);
 }
 
@@ -21,5 +22,4 @@ export const StyledLoading = styled(LoaderOutline)`
   width: 4rem;
 
   animation: ${rotate} 5s linear infinite;
-  
 `;
