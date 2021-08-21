@@ -41,3 +41,12 @@ export const StyledHeart = styled(HeartFill)`
     opacity: 0.8;
   }
 `;
+
+export const Title = styled.h1`
+  font-family: 'Open Sans', Arial, sans-serif;
+`;
+
+export const StyledLogo = styled.img`
+  margin-right: 1rem;
+  width: 2rem;
+`;
