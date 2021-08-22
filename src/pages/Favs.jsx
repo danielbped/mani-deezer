@@ -25,7 +25,7 @@ class Favs extends Component {
         </Link>
         <Title>Músicas Favoritas</Title>
         <StyledFavs>
-          {favs === null ? <p>Parece que você ainda não adicionou nenhuma música.</p>
+          {favs.length === 0 ? <p>Parece que você ainda não adicionou nenhuma música.</p>
             : favs.map((fav) => (
             <Banner
             key={ fav.id }
