@@ -72,7 +72,9 @@ class Banner extends Component {
             onClick={ () => this.handleClick(this.props) }
         >
           <StyledHeart
-            bool={ stateFavs.some((fav) => fav.id === id) || favs.some((fav) => fav.id === id) }
+            bool={ favs !== null 
+              && (stateFavs.some((fav) => fav.id === id) 
+              || favs.some((fav) => fav.id === id)) }
           />
         </Button>
         </Buttons>

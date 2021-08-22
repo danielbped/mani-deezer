@@ -21,6 +21,8 @@ class MainTracks extends Component {
             preview={ track.preview }
             duration={ track.duration }
             albumId={ track.album.id }
+            MusicLink={ track.link }
+            artistLink={ track.artist.link }
           />
         )}
       </StyledSection>

@@ -37,6 +37,8 @@ class Favs extends Component {
             preview={ fav.preview }
             duration={ fav.duration }
             albumId={ fav.albumId }
+            artistLink={ fav.artistLink }
+            MusicLink={ fav.MusicLink }
           />
           ))}
         </StyledFavs>
