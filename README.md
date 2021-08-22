@@ -1,12 +1,13 @@
 # Maneezer
 
 ## Projeto realizado como fase de um processo seletivo
-  - O projeto teve como objetivo desenvolver uma aplicação utilizando a API do aplicativo de músicas Deezer.
+  - O projeto teve como objetivo desenvolver uma aplicação utilizando a API do aplicativo de músicas Deezer, onde é possível pegar todas as informações de artistas, músicas, albuns e previews de cada música.
   - Ferramentas utilizadas:
-    - ReactJS
-    - Redux
-    - Styled Components, Styled Icons
-    - Redux Devtools Extension
+    - ReactJS;
+    - Redux;
+    - Styled Components, Styled Icons;
+    - Redux Devtools Extension.
+  - [API utilizada.](https://rapidapi.com/deezerdevs/api/deezer-1)
 
 ## Como instalar
   1 - Abra o terminal e crie um diretório de sua preferência com o comando **mkdir**:
