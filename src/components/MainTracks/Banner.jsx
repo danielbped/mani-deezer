@@ -12,10 +12,26 @@ import {
   Time,
   AlbumLink,
   AlbumImage,
-  Link,
+  StyledLink,
 } from './StyledComponents/StyledBanner';
 
 class Banner extends Component {
+  handleFavsStorage = (song) => {
+    const prevStorage = localStorage.getItem('favs');
+    if(!prevStorage) return localStorage.setItem('favs', JSON.stringify([song]));
+    const parsedPrevStorage = JSON.parse(localStorage.getItem('favs'));
+    parsedPrevStorage.some(
+      (fav) => fav.id === song.id) ?
+        localStorage.setItem('favs', JSON.stringify([...parsedPrevStorage.filter((fav) => fav.id !== song.id)]))
+        : localStorage.setItem('favs', JSON.stringify([...parsedPrevStorage, song]));
+  };
+
+  handleClick = (song) => {
+    const { toggleFavSong } = this.props;
+    toggleFavSong(song);
+    this.handleFavsStorage(song);
+  }
+
   render () {
     const {
       name,
@@ -24,17 +40,18 @@ class Banner extends Component {
       artistLink,
       preview,
       duration,
-      toggleFavSong,
       id,
-      favs,
       albumId,
       MusicLink,
+      stateFavs
     } = this.props;
 
     const minutes = Math.floor(duration/60);
     const seconds = Math.floor(((duration/60) - minutes)*60);
     const time = `${minutes}:${seconds < 10 ? `0${seconds}` : seconds }`;
     const albumLink = `https://www.deezer.com/br/album/${albumId}`;
+    const favs = JSON.parse(localStorage.getItem('favs'));
+    
 
     return (
       <Album>
@@ -52,29 +69,29 @@ class Banner extends Component {
           <Player preview={ preview } />
           <Button
             type="button"
-            onClick={ () => toggleFavSong(this.props) }
+            onClick={ () => this.handleClick(this.props) }
         >
           <StyledHeart
-            bool={ favs.some((fav) => fav.id === id) }
+            bool={ stateFavs.some((fav) => fav.id === id) || favs.some((fav) => fav.id === id) }
           />
         </Button>
         </Buttons>
         <Info>
-          <Link
+          <StyledLink
             href={ MusicLink }
             target="_blank"
             rel="noreferrer"
           >
             <Title>{ name }</Title>
-          </Link>
+          </StyledLink>
           <Time>{ time }</Time>
-          <Link
+          <StyledLink
             href={ artistLink }
             target="_blank"
             rel="noreferrer"
             >
           <p>{artist}</p>
-          </Link>
+          </StyledLink>
         </Info>
 
       </Album>
@@ -83,7 +100,7 @@ class Banner extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  favs: state.user.favs,
+  stateFavs: state.user.favs,
 })
 
 const mapDispatchToProps = (dispatch) => ({

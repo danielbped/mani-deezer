@@ -12,7 +12,7 @@ import {
 
 class Favs extends Component {
   render() {
-    const { favs } = this.props;
+    const favs = JSON.parse(localStorage.getItem('favs'));
     return(
       <main>
         <Header />
@@ -25,9 +25,10 @@ class Favs extends Component {
         </Link>
         <Title>Músicas Favoritas</Title>
         <StyledFavs>
-          {favs.length < 1 ? <p>Parece que você ainda não adicionou nenhuma música.</p>
+          {favs === null ? <p>Parece que você ainda não adicionou nenhuma música.</p>
             : favs.map((fav) => (
-            <Banner 
+            <Banner
+            key={ fav.id }
             name={ fav.name }
             artist={ fav.artist }
             id={ fav.id }
@@ -35,7 +36,7 @@ class Favs extends Component {
             link={ fav.link }
             preview={ fav.preview }
             duration={ fav.duration }
-            onClick={ true }
+            albumId={ fav.albumId }
           />
           ))}
         </StyledFavs>

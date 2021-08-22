@@ -64,7 +64,7 @@ export const Time = styled.p`
   opacity: 0.8;
 `;
 
-export const Link = styled.a`
+export const StyledLink = styled.a`
   color: black;
   cursor: pointer;
   margin: 0.25rem;

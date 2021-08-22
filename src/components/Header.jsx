@@ -9,6 +9,7 @@ import {
   StyledHeart,
   StyledLogo,
   Title,
+  StyledLink
 } from './StyledComponents/StyledHeader';
 
 class Header extends Component {
@@ -39,13 +40,15 @@ class Header extends Component {
     const { input } = this.state;
     return (
       <StyledHeader>
-        <Title>
-          <StyledLogo
-            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Deezer_Icon.svg"
-            alt="deezer"
-          />
-          Maneezer
-        </Title>
+        <StyledLink to="/">
+          <Title>
+            <StyledLogo
+              src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Deezer_Icon.svg"
+              alt="deezer"
+            />
+            Maneezer
+          </Title>
+        </StyledLink>
         <RightHeader>
           <SearchBar
             name='input'

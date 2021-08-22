@@ -44,10 +44,17 @@ export const StyledHeart = styled(HeartFill)`
 `;
 
 export const Title = styled.h1`
+  color: white;
+  cursor: pointer;
   font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 2rem;
 `;
 
 export const StyledLogo = styled.img`
   margin-right: 1rem;
   width: 2rem;
+`;
+
+export const StyledLink = styled.a`
+  text-decoration: none;
 `;
