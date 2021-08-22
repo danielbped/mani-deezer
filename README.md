@@ -1,7 +1,7 @@
 # Maneezer
 
 ## Projeto realizado como fase de um processo seletivo
-  - O projeto teve como objetivo desenvolver uma aplicação utilizando a API do aplicativo de músicas Deezer, onde é possível pegar todas as informações de artistas, músicas, albuns e previews de cada música.
+  - O projeto teve como objetivo desenvolver uma aplicação utilizando a API do aplicativo de músicas Deezer, da qual é possível pegar todas as informações de artistas, músicas, albuns e previews de cada música.
   - Ferramentas utilizadas:
     - ReactJS;
     - Redux;
