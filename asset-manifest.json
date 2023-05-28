@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/mani-deezer/static/css/main.c6254b38.chunk.css",
+    "main.js": "/mani-deezer/static/js/main.edd89aca.chunk.js",
+    "main.js.map": "/mani-deezer/static/js/main.edd89aca.chunk.js.map",
+    "runtime-main.js": "/mani-deezer/static/js/runtime-main.97bc58df.js",
+    "runtime-main.js.map": "/mani-deezer/static/js/runtime-main.97bc58df.js.map",
+    "static/js/2.91d13631.chunk.js": "/mani-deezer/static/js/2.91d13631.chunk.js",
+    "static/js/2.91d13631.chunk.js.map": "/mani-deezer/static/js/2.91d13631.chunk.js.map",
+    "index.html": "/mani-deezer/index.html",
+    "static/css/main.c6254b38.chunk.css.map": "/mani-deezer/static/css/main.c6254b38.chunk.css.map",
+    "static/js/2.91d13631.chunk.js.LICENSE.txt": "/mani-deezer/static/js/2.91d13631.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.97bc58df.js",
+    "static/js/2.91d13631.chunk.js",
+    "static/css/main.c6254b38.chunk.css",
+    "static/js/main.edd89aca.chunk.js"
+  ]
+}
