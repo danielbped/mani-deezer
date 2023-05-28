@@ -9,6 +9,8 @@
     - Redux Devtools Extension.
   - [API utilizada.](https://rapidapi.com/deezerdevs/api/deezer-1)
 
+### [Deploy](https://danielbped.github.io/mani-deezer/)
+
 ## Como instalar
   1 - Abra o terminal e crie um diretório de sua preferência com o comando **mkdir**:
   
