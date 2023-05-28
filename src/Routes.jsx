@@ -6,7 +6,7 @@ import Favs from './pages/Favs';
 class Routes extends Component {
   render() {
     return(
-      <BrowserRouter>
+      <BrowserRouter basename={ process.env.PUBLIC_URL }>
         <Route exact path="/" component={ App } />
         <Route path="/favorites" component={ Favs } />
       </BrowserRouter>
